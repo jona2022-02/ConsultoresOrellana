@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultores Orellana</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #002147;
+            --secondary: #D4AF37;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.8rem 2rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+        }
+
+        header img {
+            height: 65px;
+            transition: transform 0.3s;
+        }
+
+        header img:hover {
+            transform: scale(1.05);
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--secondary);
+            margin-left: 1.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: color 0.3s;
+            padding: 0.5rem 0;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        section {
+            padding: 7rem 2rem 3rem;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .services,
+        .founders,
+        .vision-mission {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            border: none;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            background-color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .founder-card {
+            text-align: center;
+        }
+
+        .founder-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--secondary);
+            margin: 0 auto 1.5rem;
+            display: block;
+        }
+
+        .founder-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .founder-position {
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .highlight {
+            color: var(--secondary);
+        }
+
+        .footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            text-decoration: none;
+            z-index: 1001;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+        }
+
+        .contacts {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .contact-icon {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            width: 40px;
+            text-align: center;
+            margin-right: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            color: white;
+            background-color: var(--primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .logo-section img {
+            max-width: 180px;
+            filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.2));
+        }
+
+        .vision-card h3,
+        .mission-card h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .vision-card h3 i,
+        .mission-card h3 i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                margin: 0.5rem 1rem;
+                white-space: nowrap;
+            }
+
+            section {
+                padding: 6rem 1rem 2rem;
+            }
+
+            .services,
+            .founders,
+            .vision-mission {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <a class="whatsapp-float" href="https://wa.me/50374561772" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header>
+        <img src="logoConsultores.jpg" alt="Logo Consultores Orellana">
+        <nav>
+            <a href="#empresa">Somos</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#contacto">Contacto</a>
+            <a href="#vision">Visión y Misión</a>
+            <a href="#fundadores">Fundadores</a>
+        </nav>
+    </header>
+
+    <section id="empresa">
+        <div class="logo-section">
+            <img src="logoConsultores.jpg" alt="Logo Empresa">
+        </div>
+        <h2 class="title">Consultores Orellana</h2>
+        <p style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.1rem;">
+            Somos una empresa dedicada a brindar servicios contables, jurídicos y asesoría para trámites
+            gubernamentales.
+            Nos caracterizamos por la excelencia, compromiso y experiencia profesional de nuestro equipo.
+            Con más de 15 años en el mercado, hemos ayudado a cientos de clientes a resolver sus necesidades legales y
+            financieras.
+        </p>
+    </section>
+
+    <section id="servicios">
+        <h2 class="title">Nuestros Servicios</h2>
+        <div class="services">
+            <div class="card">
+                <h3 style="color: var(--primary); text-align: center; margin-bottom: 1.5rem;">
+                    <i class="fas fa-balance-scale" style="color: var(--secondary); margin-right: 10px;"></i>
+                    Servicios Jurídicos
+                </h3>
+                <ul style="padding-left: 20px;">
+                    <li>Consultas Legales</li>
+                    <li>Asesoría en Contratos</li>
+                    <li>Representación Legal</li>
+                    <li>Notariado</li>
+                    <li>Derecho Laboral</li>
+                    <li>Derecho de Familia</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 style="color: var(--primary); text-align: center; margin-bottom: 1.5rem;">
+                    <i class="fas fa-calculator" style="color: var(--secondary); margin-right: 10px;"></i>
+                    Contabilidad
+                </h3>
+                <ul style="padding-left: 20px;">
+                    <li>Elaboración de estados financieros</li>
+                    <li>Declaraciones fiscales</li>
+                    <li>Asesoría contable y fiscal</li>
+                    <li>Auditorías</li>
+                    <li>Contabilidad para PYMES</li>
+                    <li>Planificación tributaria</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 style="color: var(--primary); text-align: center; margin-bottom: 1.5rem;">
+                    <i class="fas fa-file-alt" style="color: var(--secondary); margin-right: 10px;"></i>
+                    Trámites Gubernamentales
+                </h3>
+                <ul style="padding-left: 20px;">
+                    <li>Ministerio de Hacienda</li>
+                    <li>Trámites en Alcaldías</li>
+                    <li>CNR (Registro de propiedad y Registro de Comercio)</li>
+                    <li>SERTRACEN (traspaso de vehículos, etc)</li>
+                    <li>Obtención de NIT</li>
+                    <li>Legalización de empresas</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <h2 class="title">Contacto</h2>
+        <div class="contacts">
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                <div>
+                    <p style="margin: 0; font-weight: 500;">+503 7456-1772</p>
+                    <p style="margin: 0; font-size: 0.9rem; color: var(--gray);">Teléfono Celular</p>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                <div>
+                    <p style="margin: 0; font-weight: 500;">+503 2222-23222</p>
+                    <p style="margin: 0; font-size: 0.9rem; color: var(--gray);">Teléfono Fijo</p>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <div>
+                    <p style="margin: 0; font-weight: 500;">tobiasorellana@yahoo.es</p>
+                    <p style="margin: 0; font-size: 0.9rem; color: var(--gray);">Correo Electrónico</p>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://www.facebook.com/consultores orellana" class="social-link" title="Facebook" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/" class="social-link" title="Instagram" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:tobiasorellana@yahoo.es" class="social-link" title="Correo electrónico">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://wa.me/50374561772" class="social-link" title="WhatsApp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="vision">
+        <h2 class="title">Visión y Misión</h2>
+        <div class="vision-mission">
+            <div class="card vision-card">
+                <h3><i class="fas fa-eye"></i> Visión</h3>
+                <p>Ser una empresa líder en soluciones legales, contables y trámites integrales en El Salvador,
+                    reconocida por su excelencia profesional, innovación en servicios y compromiso con el desarrollo
+                    empresarial de nuestros clientes.</p>
+            </div>
+            <div class="card mission-card">
+                <h3><i class="fas fa-bullseye"></i> Misión</h3>
+                <p>Brindar asesoría profesional con ética, transparencia y compromiso en cada servicio ofrecido,
+                    proporcionando soluciones personalizadas que generen valor a nuestros clientes y contribuyan al
+                    crecimiento de sus negocios y proyectos personales.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="fundadores">
+        <h2 class="title">Fundadores</h2>
+        <div class="founders">
+            <div class="card founder-card">
+                <img src="tobias.jpg" alt="Tobias Orellana" class="founder-img">
+                <p class="founder-name">Tobias Orellana</p>
+                <p class="founder-position">Abogado y Notario</p>
+                <p>Con más de 20 años de experiencia en el ámbito legal, especializado en derecho notarial y asesoría
+                    empresarial. Ha sido consultor de confianza para múltiples empresas juridicas y naturales.
+                </p>
+            </div>
+            <div class="card founder-card">
+                <img src="nathaly.jpg" alt="Natalia Orellana" class="founder-img">
+                <p class="founder-name">Natalia Orellana</p>
+                <p class="founder-position">Abogada Especialista</p>
+                <p>Experta en derecho civil y laboral, comprometida con la justicia y la asesoría legal eficaz. Ha
+                    representado con éxito numerosos casos en diferentes instancias judiciales.</p>
+            </div>
+            <div class="card founder-card">
+                <img src="evelyn.jpg" alt="Evelyn Susana" class="founder-img">
+                <p class="founder-name">Evelyn Orellana</p>
+                <p class="founder-position">Contadora</p>
+                <p>Contadora profesional enfocada en soluciones contables estratégicas para negocios y personas
+                    naturales. Especialista en planificación fiscal y auditoría financiera.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <p style="margin-bottom: 1.5rem;">Brindando soluciones legales y contables con excelencia desde -----</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                <a href="#empresa" style="color: white; text-decoration: none;">Sobre Nosotros</a>
+                <a href="#servicios" style="color: white; text-decoration: none;">Servicios</a>
+                <a href="#contacto" style="color: white; text-decoration: none;">Contacto</a>
+                <a href="#fundadores" style="color: white; text-decoration: none;">Equipo</a>
+            </div>
+            <p>&copy; 2025 Consultores Orellana.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
